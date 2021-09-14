@@ -1,15 +1,16 @@
-<?php 
-require_once './vendor/autoload.php';
+<?php
 
-use Facebook\WebDriver\Chrome\ChromeOptions;
-use Facebook\WebDriver\Remote\RemoteWebDriver;
-use Facebook\WebDriver\Remote\DesiredCapabilities;
+// require_once './vendor/autoload.php';
 
-$capabilities = DesiredCapabilities::chrome();
-$options = new ChromeOptions();
-$capabilities->setCapability(ChromeOptions::CAPABILITY, $options);
-$r = RemoteWebDriver::create('http://localhost:4444',$capabilities);
-$r->get('https://google.com');
+// use Facebook\WebDriver\Chrome\ChromeOptions;
+// use Facebook\WebDriver\Remote\RemoteWebDriver;
+// use Facebook\WebDriver\Remote\DesiredCapabilities;
 
-sleep(10);
+// $capabilities = DesiredCapabilities::chrome();
+// $options = new ChromeOptions();
+// $capabilities->setCapability(ChromeOptions::CAPABILITY, $options);
+// $r = RemoteWebDriver::create('http://localhost:4444',$capabilities);
+// $r->get('https://google.com');
+
+// sleep(10);
 // $r->quit();
