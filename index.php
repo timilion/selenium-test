@@ -1,6 +1,11 @@
 <?php
 
-// require_once './vendor/autoload.php';
+ require_once './vendor/autoload.php';
+
+ use Symfony\Component\Dotenv\Dotenv;
+
+ $dotenv = new Dotenv();
+ $dotenv->load(__DIR__ . '/.env');
 
 // use Facebook\WebDriver\Chrome\ChromeOptions;
 // use Facebook\WebDriver\Remote\RemoteWebDriver;
