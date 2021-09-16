@@ -1,5 +1,7 @@
 <?php
 
+use app\selenium\SeleniumChrome;
+
  require_once './vendor/autoload.php';
 
  use Symfony\Component\Dotenv\Dotenv;
@@ -7,15 +9,20 @@
  $dotenv = new Dotenv();
  $dotenv->load(__DIR__ . '/.env');
 
-// use Facebook\WebDriver\Chrome\ChromeOptions;
-// use Facebook\WebDriver\Remote\RemoteWebDriver;
-// use Facebook\WebDriver\Remote\DesiredCapabilities;
+$selenium = new SeleniumChrome($_ENV['WEBDRAIVER_URL']);
+$selenium->getUrl($_ENV['ABYRGA_URL']);
 
-// $capabilities = DesiredCapabilities::chrome();
-// $options = new ChromeOptions();
-// $capabilities->setCapability(ChromeOptions::CAPABILITY, $options);
-// $r = RemoteWebDriver::create('http://localhost:4444',$capabilities);
-// $r->get('https://google.com');
+if($login = $selenium->querySelector('#loginform-email')) {
+    $login->sendKeys($_ENV['ABYRGA_EMAIL']);
+}
 
-// sleep(10);
-// $r->quit();
+if($password = $selenium->querySelector('#loginform-password')) {
+    $password->sendKeys($_ENV['ABYRGA_PASSWORD']);
+}
+
+if($button = $selenium->querySelector('[name=login-button]')) {
+    $button->click();
+}
+sleep(2);
+
+$selenium->getUrl('https://iw2.abyrga.ru/manage/source/all?Source[channel]=instdir&Source[name]=iviv121234');
